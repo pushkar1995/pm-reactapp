@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import MainHeader from './Components/MainHeader'
 import SubHeader from './Components/SubHeader';
 import { PageEnum } from './Components/pmapp.types'
-import Grid from './Pages/Grid';
+import Grid from './Pages/Grid'
 import Timeline from './Pages/Timeline';
 
 function App() {
@@ -17,13 +18,14 @@ function App() {
  
   return (
     <div className='bg-grey-light'>
-     <SubHeader
-        onClickShowGridPage = {showGridPageHnd}
-        onClickShowTimelinePage = {showTimelinePageHnd}
-    />
+      <MainHeader />
+      <SubHeader
+          onClickShowGridPage = {showGridPageHnd}
+          onClickShowTimelinePage = {showTimelinePageHnd}
+      />
      <section>
       {shownPage === PageEnum.grid && (
-        <div className="mx-10 col-span-2 bg-white rounded overflow-hidden shadow">
+        <div className="">
           <Grid />
         </div>
       )}

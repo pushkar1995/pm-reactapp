@@ -19,6 +19,7 @@ module.exports = {
           DEFAULT: "",
         },
         white: {
+          light: '#FEFFFE',
           DEFAULT: '#ffff'
         },
         blue: {
@@ -29,7 +30,10 @@ module.exports = {
         }
       },
       screens: {
-        xs: "464px",
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px'
       },
       fontFamily: {
         sans: ["Arial"],
