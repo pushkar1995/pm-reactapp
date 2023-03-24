@@ -3,11 +3,17 @@ import { useTable, useSortBy } from 'react-table'
 import useGridTableData from '../../hooks/useGridTableData'
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
+import { Task } from '../pmapp.types'
 
-const GTable = () => { 
-    console.log(useGridTableData)
+interface GridTaskListProps {
+  taskArray: Task[],
+}
+
+const GTable = (props: GridTaskListProps) => { 
+    const { taskArray } = props
+    // console.log(useGridTableData)
     const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => MOCK_DATA, [])
+    const data = useMemo(() => taskArray, [])
 
     const tableInstance = useTable({
         // columns: COLUMNS,

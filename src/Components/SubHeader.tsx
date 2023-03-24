@@ -21,7 +21,7 @@ const SubHeader = (props: Props) => {
                     </ul>
                 </div>
                 
-                <ul className='flex flex-row md:ml-24'>
+                <ul className='grid grid-flow-col col-span-5 md:row-span-5'>
                     <div className=''>
                         <button type='button' className='bg-white text-xs font-semibold text-purple-dark border border-purple-dark h-8 w-28 rounded-3xl'>Shift Days</button>
                     </div>
