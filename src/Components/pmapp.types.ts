@@ -1,7 +1,7 @@
 export interface Task {
    mode: string;
    completion: string;
-   id: string;
+   id: Number;
    name: string;
    milestone: string;
    initialEstimation: string;
@@ -22,7 +22,7 @@ export const dummyTaskList: Task[] = [
    {
       mode: '80%',
       completion: '20%',
-      id: new Date().toString(),
+      id: new Date().getMilliseconds(),
       name: 'abcd',
       milestone: 'FLAG',
       initialEstimation: '8 hrs',

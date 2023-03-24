@@ -95,7 +95,7 @@ const AddTForm = (props: AddTaskFormProps) => {
         const data: Task = {
             mode: modeTitle,
             completion: completion,
-            id: new Date().toString(),
+            id: new Date().getMilliseconds(),
             name: name,
             milestone: milestone,
             initialEstimation: initialEstimation,

@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react'
 import LoadingMsg from '../Components/CustomMessage/LoadingMessage'
 import ErrorMsg from '../Components/CustomMessage/ErrorMessage'
 import useGridTableData from '../hooks/useGridTableData'
-import GTable from '../Components/Grid/GTable'
 import GridList from '../Components/Grid/GridList'
 import AddTForm from '../Components/Grid/AddTaskForm'
 import { PageEnum, dummyTaskList, Task } from '../Components/pmapp.types'
@@ -20,14 +19,18 @@ const Grid = () => {
     setTaskList([...taskList, data])
   }
 
+  const deleteTask = (id: Number) => {
+    setTaskList(taskList.filter((task) => {
+      return task.id !== id
+    }))
+  }
+
   return (
     <div className='mx-10 pb-10 bg-white rounded overflow-x-auto'>
-      <GTable
-        taskArray={taskList} 
-      />
-      {/* <GridList
+      <GridList
         taskArray={taskList}
-      /> */}
+        onDeleteClickHnd={deleteTask}
+      />
       {showForm === PageEnum.addFormInTable && (
           <AddTForm
               onAddTaskClickBtnHandler={addTask} 
