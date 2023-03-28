@@ -6,8 +6,8 @@ export interface Task {
    milestone: string;
    initialEstimation: string;
    currentEstimation: string;
-   start: string;
-   end: string;
+   startDate: string;
+   endDate: string;
    resource: string;
    status: string;
    dep: string;
@@ -27,8 +27,8 @@ export const dummyTaskList: Task[] = [
       milestone: 'FLAG',
       initialEstimation: '8 hrs',
       currentEstimation: '6 hrs',
-      start: 'Date',
-      end: 'Date',
+      startDate: 'Start Date',
+      endDate: 'Date',
       resource: 'allocate someone',
       status: 'In Progess',
       dep: '34',
@@ -43,5 +43,6 @@ export const dummyTaskList: Task[] = [
 export enum PageEnum {
    grid,
    timeline,
-   addFormInTable
+   addFormInTable,
+   editFormInTable
 }

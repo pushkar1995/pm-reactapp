@@ -27,7 +27,7 @@ const getGridTableData = async () => {
         {
             mode: 'auto',
             completion: '44%',
-            id: 1,
+            id: 2,
             name: 'Planning',
             milestone: 'Flag',
             initialEstimation: '8hrs',

@@ -1,12 +1,13 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, useRef, useEffect } from 'react'
 import { Task } from '../pmapp.types'
 
 interface AddTaskFormProps {
     onAddTaskClickBtnHandler: (data: Task) => void
+    toClearAddFormHandler: () => void
   }
 
 const AddTForm = (props: AddTaskFormProps) => {
-    const { onAddTaskClickBtnHandler } = props
+    const { onAddTaskClickBtnHandler,toClearAddFormHandler } = props
     const [ modeTitle, setModeTitle ] = useState('')
     const [ completion, setCompletion ] = useState('') 
     const [ name, setName ] = useState('')
@@ -100,8 +101,8 @@ const AddTForm = (props: AddTaskFormProps) => {
             milestone: milestone,
             initialEstimation: initialEstimation,
             currentEstimation: currentEstimation,
-            start: startDate,
-            end: endDate,                
+            startDate: startDate,
+            endDate: endDate,                
             resource: resource,
             status: status,
             dep: dep,                
@@ -112,50 +113,35 @@ const AddTForm = (props: AddTaskFormProps) => {
             label: label  
         }
         onAddTaskClickBtnHandler(data)
-        setModeTitle('')
-        setCompletion('')
-        setName('')
-        setMilestone('')
-        setInitialEstimation('')
-        setCurrentEstimation('')
-        setStartDate('')
-        setEndDate('')
-        setResource('')
-        setStatus('')
-        setDep('')
-        setPriority('')
-        setActual('')
-        setDescription('')
-        setInvMilestone('')
-        setLabel('')
+        toClearAddFormHandler()
     }
 
   return (
     <form
-        className='flex flex-row m-1'
+        className='flex flex-row'
         onSubmit={onAddTaskBtnClickHnd} 
     >
         <input 
             title='Mode'
             type='text'
             placeholder='Mode'
-            className='h-10 w-8 pl-3 m-2 border border-blue'
-             value={modeTitle}
-             onChange={handleModeChange}
+            className='h-15 w-14 mx-8 border'
+            value={modeTitle}
+            onChange={handleModeChange}
           />
            <input 
             title='Completion'
             type='text'
-            placeholder='Completion'
-            className=''
-             value={completion}
-             onChange={handleCompletionChange}
+            placeholder='Com'
+            className='h-15 w-14 mx-8 border'
+            value={completion}
+            onChange={handleCompletionChange}
           />
            <input 
             title='Name'
             type='text'
             placeholder='Name'
-            className=''
+            className='h-15 mx-8 border'
             value={name}
             onChange={handleNameChange}
           />
@@ -163,7 +149,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Milestone'
             type='text'
             placeholder='Milestone'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={milestone}
             onChange={handleMilestoneChange}
           />
@@ -171,7 +157,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Initial Estimation'
             type='text'
             placeholder='Initial Estimation'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={initialEstimation}
             onChange={handleInitialEstimation}
           />
@@ -179,7 +165,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Current Estimation'
             type='text'
             placeholder='Current Estimation'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={currentEstimation}
             onChange={handleCurrentEstimation}
 
@@ -188,15 +174,16 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='StartDate'
             type='text'
             placeholder='Start'
-            className=''
+            className='h-15 w-15 mx-8 border'
             value={startDate}
             onChange={handleStartDateChange}
+            // ref={dateInputRef}
           />
           <input 
             title='EndDate'
             type='text'
             placeholder='End'
-            className=''
+            className='h-15 w-15 mx-8 border'
             value={endDate}
             onChange={handleEndDateChange}
           />
@@ -204,7 +191,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Resource'
             type='text'
             placeholder='Resource'
-            className=''
+            className='h-15 mx-8 border'
             value={resource}
             onChange={handleResourceChange}
           />
@@ -212,7 +199,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Status'
             type='text'
             placeholder='Status'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={status}
             onChange={handleStatusChange}
           />
@@ -220,7 +207,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Dep'
             type='text'
             placeholder='Dep'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={dep}
             onChange={handleDepChange}
           />
@@ -228,7 +215,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Priority'
             type='text'
             placeholder='Priority'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={priority}
             onChange={handlePriorityChange}
           />
@@ -236,7 +223,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Actual'
             type='text'
             placeholder='Actual'
-            className=''
+            className='h-15 w-14 mx-8 border'
             value={actual}
             onChange={handleActualChange}
           />
@@ -244,7 +231,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Description'
             type='text'
             placeholder='Description'
-            className=''
+            className='h-15 mx-8 border'
             value={description}
             onChange={handleDescriptionChange}
           />
@@ -252,7 +239,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Inv. Milestone'
             type='text'
             placeholder='Inv. Milestone'
-            className=''
+            className='h-15 mx-8 border'
             value={invMilestone}
             onChange={handleInvMilestoneChange}
           />
@@ -260,7 +247,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             title='Label'
             type='text'
             placeholder='Label'
-            className=''
+            className='h-15 mx-8 border'
             value={label}
             onChange={handleLabelChange}
           />
