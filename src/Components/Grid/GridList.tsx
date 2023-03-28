@@ -12,7 +12,7 @@ const GridList = (props: GridTaskListProps) => {
   const { taskArray, onDeleteClickHnd, onEdit } = props
   return (
     // <div className=''>
-      <table className="table-auto w-full rounded border-separate border-spacing-y-4 pt-4">
+      <table className="table-auto w-full rounded border-separate  pt-4">
         <thead className='text-center text-grey text-sm font-semibold'>
           <tr className="text-PrimaryText">
             <th className="font-medium px-8">Mode</th>
@@ -34,49 +34,48 @@ const GridList = (props: GridTaskListProps) => {
             <th className="font-medium px-8">Label</th>
           </tr>
         </thead>
-        <tbody className="table-row-group text-sm p-4 py-2">
+        <tbody className="table-row-group text-sm">
           {taskArray?.map((task) => {
             console.log(task)
           return (
-            // <div className='flex'>
-              <tr
-                className=""
-                >   
-                    <div className='pt-2 mr-3'>
-                      <button
-                        title='Edit'
-                        type='button'
-                        className='mr-2'
-                        onClick={() => onEdit(task)}
-                      >
-                        <AiTwotoneEdit />
-                      </button>
-                      <button
-                        type='button'
-                        title='Delete'
-                        className='text-pinkyred'
-                        onClick={() => onDeleteClickHnd(task.id)} 
-                    >X</button>
-                    </div>
-                    <td className="px-8">{task.mode}</td>
-                    <td className="px-8">{task.completion}</td>
-                    {/* <td className="">{task.id}</td> */}
-                    <td className="px-8">{task.name}</td>
-                    <td className="px-8">{task.milestone}</td>
-                    <td className="px-8">{task.initialEstimation}</td>
-                    <td className="px-8">{task.currentEstimation}</td>
-                    <td className="px-8">{task.startDate}</td>
-                    <td className="px-8">{task.endDate}</td>
-                    <td className="px-8">{task.resource}</td>
-                    <td className="px-8">{task.status}</td>
-                    <td className="px-8">{task.dep}</td>
-                    <td className="px-8">{task.priority}</td>
-                    <td className="px-8">{task.actual}</td>
-                    <td className="px-8">{task.description}</td>
-                    <td className="px-8">{task.invMilestone}</td>
-                    <td className="px-8">{task.label}</td>
+            <>
+                <div className='-pt-3'>
+                  <button
+                    title='Edit'
+                    type='button'
+                    className='mr-2'
+                    onClick={() => onEdit(task)}
+                  >
+                  <AiTwotoneEdit />
+                  </button>
+                  <button
+                    type='button'
+                    title='Delete'
+                    className='text-pinkyred'
+                    onClick={() => onDeleteClickHnd(task.id)} 
+                  >X</button>
+                </div>
+                <tr
+                  className="-pt-6"
+                  >   
+                  <td className="px-8">{task.mode}</td>
+                  <td className="px-8">{task.completion}</td>
+                  <td className="px-8">id</td>
+                  <td className="px-8">{task.name}</td>
+                  <td className="px-8">{task.milestone}</td>
+                  <td className="px-8">{task.initialEstimation}</td>
+                  <td className="px-8">{task.currentEstimation}</td>
+                  <td className="px-8">{task.startDate}</td>
+                  <td className="px-8">{task.endDate}</td>
+                  <td className="px-8">{task.resource}</td>
+                  <td className="px-8">{task.status}</td>                    <td className="px-8">{task.dep}</td>
+                  <td className="px-8">{task.priority}</td>
+                  <td className="px-8">{task.actual}</td>
+                  <td className="px-8">{task.description}</td>
+                  <td className="px-8">{task.invMilestone}</td>
+                  <td className="px-8">{task.label}</td>
               </tr>
-            // </div>
+            </>
           )
       })}
         </tbody>

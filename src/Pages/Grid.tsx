@@ -79,7 +79,9 @@ const Grid = () => {
           clearEditFormHandler={showTableList}
         />
       )}
-
+      <div className='w-full'>
+            <hr className="-mb-2 mt-5 w-full border-grey" />
+      </div>
       <div className='pt-5'>
         <button onClick={onAddTaskClickHnd}>+ Add Task</button>
       </div>

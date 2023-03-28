@@ -253,7 +253,7 @@ const AddTForm = (props: AddTaskFormProps) => {
           />
           <button
             type='submit'
-            className='p-2 -pr-2 text-blue'
+            className='p-2 text-blue border rounded bg-grey'
           >Add</button>
     </form>
   )
