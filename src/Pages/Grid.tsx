@@ -1,6 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import LoadingMsg from '../Components/CustomMessage/LoadingMessage'
-import ErrorMsg from '../Components/CustomMessage/ErrorMessage'
 import useGridTableData from '../hooks/useGridTableData'
 import GridList from '../Components/Grid/GridList'
 import GTable from '../Components/Grid/GTable'
@@ -38,12 +36,14 @@ const Grid = () => {
     setEditTask(data)
   }
 
+  //Update the Edited Task
   const updateTask = (data:Task) => {
     setTaskList(taskList.map(task => ({
       ...task,
       mode: task.id === data.id ? data.mode: task.mode,
       name: task.id === data.id ? data.name: task.name,
       currentEstimation: task.id === data.id ? data.currentEstimation: task.currentEstimation,
+      // startDate: task.id === data.id ? data.startDate: task.startDate,
       endDate: task.id === data.id ? data.endDate: task.endDate,
       resource: task.id === data.id ? data.resource: task.resource,
       status: task.id === data.id ? data.status: task.status,
@@ -52,6 +52,14 @@ const Grid = () => {
       actual: task.id === data.id ? data.actual: task.actual,
       invMilestone: task.id === data.id ? data.invMilestone: task.invMilestone,
       label: task.id === data.id ? data.label: task.label,
+    })))
+  }
+
+  // Milestone Flag Color Toggle
+  const toogleMilestone = (id: Number) => {
+    setTaskList(taskList.map(task => ({
+      ...task,
+      milestone: task.id === id ? !task.milestone : task.milestone
     })))
   }
 
@@ -65,6 +73,7 @@ const Grid = () => {
         taskArray={taskList}
         onDeleteClickHnd={deleteTask}
         onEdit = {editTaskData}
+        toogleMilestoneFlag={toogleMilestone}
       />
       {showForm === PageEnum.addFormInTable && (
           <AddTaskForm

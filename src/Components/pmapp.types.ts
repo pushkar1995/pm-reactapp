@@ -3,11 +3,11 @@ export interface Task {
    completion: string;
    id: Number;
    name: string;
-   milestone: string;
+   milestone: boolean;
    initialEstimation: string;
    currentEstimation: string;
-   startDate: string;
-   endDate: string;
+   startDate: Date;
+   endDate: Date;
    resource: string;
    status: string;
    dep: string;
@@ -24,11 +24,11 @@ export const dummyTaskList: Task[] = [
       completion: '20%',
       id: new Date().getMilliseconds(),
       name: 'abcd',
-      milestone: 'FLAG',
+      milestone: false,
       initialEstimation: '8 hrs',
       currentEstimation: '6 hrs',
-      startDate: 'Start Date',
-      endDate: 'Date',
+      startDate: new Date(),
+      endDate: new Date(),
       resource: 'allocate someone',
       status: 'In Progess',
       dep: '34',

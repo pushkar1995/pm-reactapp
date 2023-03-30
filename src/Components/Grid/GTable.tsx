@@ -12,25 +12,20 @@ interface GridTaskListProps {
 
 const GTable = (props: GridTaskListProps) => { 
     const { taskArray,onDeleteClickHnd } = props
-
-    // useEffect (() => {
-    //     console.log(taskArray)
-    // },[taskArray])
     // console.log(taskArray)
     const columns: any = useMemo(() => COLUMNS, [])
     // const data = useMemo(() => MOCK_DATA, [])
-    const data = useMemo(() => taskArray, [])
-    console.log(data)
+    const data = useMemo(() => taskArray, [taskArray])
+    // console.log(data)
 
     const tableInstance = useTable({
         // columns: COLUMNS,
         // data: MOCK_DATA
         columns,
-        data
+        data 
     },
     useSortBy
     )
-
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance
 
   return (

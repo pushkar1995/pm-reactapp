@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from 'react'
 import { Task } from '../pmapp.types'
-
 interface AddTaskFormProps {
     onAddTaskClickBtnHandler: (data: Task) => void
     toClearAddFormHandler: () => void
@@ -11,11 +10,11 @@ const AddTForm = (props: AddTaskFormProps) => {
     const [ modeTitle, setModeTitle ] = useState('')
     const [ completion, setCompletion ] = useState('') 
     const [ name, setName ] = useState('')
-    const [ milestone, setMilestone ] = useState('')
+    // const [ milestone, setMilestone ] = useState('')
     const [ initialEstimation, setInitialEstimation ] = useState('')
     const [ currentEstimation, setCurrentEstimation ] = useState('')
-    const [ startDate, setStartDate ] = useState('')
-    const [ endDate, setEndDate ] = useState('')
+    const [ startDate, setStartDate ] = useState(new Date())
+    const [ endDate, setEndDate ] = useState(new Date())
     const [ resource, setResource ] = useState('')
     const [ status, setStatus ] = useState('')
     const [ dep, setDep ] = useState('')
@@ -37,9 +36,9 @@ const AddTForm = (props: AddTaskFormProps) => {
         setName(e.target.value)
     }
 
-    const handleMilestoneChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setMilestone(e.target.value)
-    }
+    // const handleMilestoneChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    //     setMilestone(e.target.value)
+    // }
 
 
     const handleInitialEstimation = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -50,12 +49,12 @@ const AddTForm = (props: AddTaskFormProps) => {
         setCurrentEstimation(e.target.value)
     }
 
-    const handleStartDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setStartDate(e.target.value)
+    const handleStartDateChange = (e: ChangeEvent<Date>): void => {
+        // setStartDate(e.target.value)
     }
 
     const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setEndDate(e.target.value)
+        // setEndDate(e.target.value)
     }
 
     const handleResourceChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -98,7 +97,7 @@ const AddTForm = (props: AddTaskFormProps) => {
             completion: completion,
             id: new Date().getMilliseconds(),
             name: name,
-            milestone: milestone,
+            milestone: false,
             initialEstimation: initialEstimation,
             currentEstimation: currentEstimation,
             startDate: startDate,
@@ -145,14 +144,14 @@ const AddTForm = (props: AddTaskFormProps) => {
             value={name}
             onChange={handleNameChange}
           />
-          <input 
+          {/* <input 
             title='Milestone'
             type='text'
             placeholder='Milestone'
             className='h-15 w-14 mx-8 border'
             value={milestone}
             onChange={handleMilestoneChange}
-          />
+          /> */}
           <input 
             title='Initial Estimation'
             type='text'
@@ -172,20 +171,19 @@ const AddTForm = (props: AddTaskFormProps) => {
           />
           <input 
             title='StartDate'
-            type='text'
-            placeholder='Start'
-            className='h-15 w-15 mx-8 border'
-            value={startDate}
-            onChange={handleStartDateChange}
-            // ref={dateInputRef}
+            type='date'
+            // placeholder='Start'
+            // className='h-15 w-15 mx-8 border'
+            // value={startDate}
+            // onChange={handleStartDateChange}
           />
           <input 
             title='EndDate'
-            type='text'
-            placeholder='End'
-            className='h-15 w-15 mx-8 border'
-            value={endDate}
-            onChange={handleEndDateChange}
+            type='date'
+            // placeholder='End'
+            // className='h-15 w-15 mx-8 border'
+            // value={endDate}
+            // onChange={handleEndDateChange}
           />
           <input 
             title='Resource'

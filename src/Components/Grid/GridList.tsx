@@ -1,15 +1,18 @@
 import React from 'react'
 import { Task } from '../pmapp.types'
 import { AiTwotoneEdit } from "react-icons/ai"
+import { BsFlag } from "react-icons/bs"
 
 interface GridTaskListProps {
   taskArray: Task[],
   onDeleteClickHnd(id: Number): any,
   onEdit: (data: Task) => void
+  toogleMilestoneFlag: any
 }
 
 const GridList = (props: GridTaskListProps) => {
-  const { taskArray, onDeleteClickHnd, onEdit } = props
+  const { taskArray, onDeleteClickHnd, onEdit,toogleMilestoneFlag } = props
+
   return (
     // <div className=''>
       <table className="table-auto w-full rounded border-separate  pt-4">
@@ -62,13 +65,40 @@ const GridList = (props: GridTaskListProps) => {
                   <td className="px-8">{task.completion}</td>
                   <td className="px-8">id</td>
                   <td className="px-8">{task.name}</td>
-                  <td className="px-8">{task.milestone}</td>
+                  <td className="px-8">
+                    {/* {task.milestone} */}
+                    <BsFlag
+                      onChange={() => toogleMilestoneFlag(task.id)}
+                      // className={`${task.milestone ? 'fill-pinkyred' : ''}`}
+                    />
+                  </td>
                   <td className="px-8">{task.initialEstimation}</td>
                   <td className="px-8">{task.currentEstimation}</td>
-                  <td className="px-8">{task.startDate}</td>
-                  <td className="px-8">{task.endDate}</td>
+                  <td className="px-8">
+                    {/* {task.startDate} */}
+                    <input 
+                        title='StartDate'
+                        type='date'
+                        // placeholder='Start'
+                        // className='h-15 w-15 mx-8 border'
+                        // value={startDate}
+                        // onChange={handleStartDateChange}
+                    />
+                  </td>
+                  <td className="px-8">
+                    {/* {task.endDate} */}
+                    <input 
+                        title='StartDate'
+                        type='date'
+                        // placeholder='Start'
+                        // className='h-15 w-15 mx-8 border'
+                        // value={startDate}
+                        // onChange={handleStartDateChange}
+                    />
+                  </td>
                   <td className="px-8">{task.resource}</td>
-                  <td className="px-8">{task.status}</td>                    <td className="px-8">{task.dep}</td>
+                  <td className="px-8">{task.status}</td>                    
+                  <td className="px-8">{task.dep}</td>
                   <td className="px-8">{task.priority}</td>
                   <td className="px-8">{task.actual}</td>
                   <td className="px-8">{task.description}</td>

@@ -47,11 +47,11 @@ const EditGridForm = (props: EditTaskFormProps) => {
     }
 
     const handleStartDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setUpdatedStartDate(e.target.value)
+        // setUpdatedStartDate(e.target.value)
     }
 
     const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        setUpdatedEndDate(e.target.value)
+        // setUpdatedEndDate(e.target.value)
     }
 
     const handleResourceChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -141,11 +141,11 @@ const EditGridForm = (props: EditTaskFormProps) => {
             value={updatedName}
             onChange={handleNameChange}
           />
-          <input 
+          {/* <input 
             title='Milestone'
             className='h-15 w-14 mx-8 border'
             value={currentData.milestone}
-          />
+          /> */}
           <input 
             title='Initial Estimation'
             // placeholder='Initial Estimation'
@@ -167,8 +167,8 @@ const EditGridForm = (props: EditTaskFormProps) => {
             type='text'
             placeholder='Start'
             className='h-15 w-15 mx-8 border'
-            value={updatedStartDate}
-            onChange={handleStartDateChange}
+            // value={updatedStartDate}
+            // onChange={handleStartDateChange}
             // ref={dateInputRef}
           />
           <input 
@@ -176,7 +176,7 @@ const EditGridForm = (props: EditTaskFormProps) => {
             type='text'
             placeholder='End'
             className='h-15 w-15 mx-8 border'
-            value={updatedEndDate}
+            // value={updatedEndDate}
             onChange={handleEndDateChange}
           />
           <input 
