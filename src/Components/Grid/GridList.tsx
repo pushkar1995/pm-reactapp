@@ -13,6 +13,11 @@ interface GridTaskListProps {
 const GridList = (props: GridTaskListProps) => {
   const { taskArray, onDeleteClickHnd, onEdit,toogleMilestoneFlag } = props
 
+  // const isDate =(endDate: any) => {
+  //   return taskArray.endDate === Date
+  // }
+  // console.log(isDate)
+
   return (
     // <div className=''>
       <table className="table-auto w-full rounded border-separate  pt-4">
@@ -38,74 +43,64 @@ const GridList = (props: GridTaskListProps) => {
           </tr>
         </thead>
         <tbody className="table-row-group text-sm">
-          {taskArray?.map((task) => {
-            console.log(task)
+          {taskArray?.map((task, id) => {
+            // console.log(task)
           return (
             <>
-                <div className='-pt-3'>
-                  <button
-                    title='Edit'
-                    type='button'
-                    className='mr-2'
-                    onClick={() => onEdit(task)}
-                  >
-                  <AiTwotoneEdit />
-                  </button>
-                  <button
-                    type='button'
-                    title='Delete'
-                    className='text-pinkyred'
-                    onClick={() => onDeleteClickHnd(task.id)} 
-                  >X</button>
-                </div>
-                <tr
-                  className="-pt-6"
-                  >   
-                  <td className="px-8">{task.mode}</td>
-                  <td className="px-8">{task.completion}</td>
-                  <td className="px-8">id</td>
-                  <td className="px-8">{task.name}</td>
-                  <td className="px-8">
-                    {/* {task.milestone} */}
-                    <BsFlag
-                      onChange={() => toogleMilestoneFlag(task.id)}
-                      // className={`${task.milestone ? 'fill-pinkyred' : ''}`}
-                    />
-                  </td>
-                  <td className="px-8">{task.initialEstimation}</td>
-                  <td className="px-8">{task.currentEstimation}</td>
-                  <td className="px-8">
+              <button
+                title='Edit'
+                type='button'
+                className='mr-2'
+                onClick={() => onEdit(task)}
+               >
+                <AiTwotoneEdit />
+              </button>
+              <button
+                type='button'
+                title='Delete'
+                className='text-pinkyred'
+                onClick={() => onDeleteClickHnd(task.id)} 
+              >X</button>
+              <tr
+                className="-pt-6"
+                >   
+                <td className="px-8">{task.mode}</td>
+                <td className="px-8">{task.completion}</td>
+                <td className="px-8">id</td>
+                <td className="px-8">{task.name}</td>
+                <td className="px-8">
+                  {/* {task.milestone} */}
+                  <BsFlag
+                    onChange={() => toogleMilestoneFlag(task.id)}
+                    // className={`${task.milestone ? 'fill-pinkyred' : ''}`}
+                  />
+                </td>
+                <td className="px-8">{task.initialEstimation}</td>
+                <td className="px-8">{task.currentEstimation}</td>
+                <td className="px-8">
                     {/* {task.startDate} */}
-                    <input 
+                    {/* <input 
                         title='StartDate'
                         type='date'
                         // placeholder='Start'
                         // className='h-15 w-15 mx-8 border'
                         // value={startDate}
                         // onChange={handleStartDateChange}
-                    />
-                  </td>
-                  <td className="px-8">
-                    {/* {task.endDate} */}
-                    <input 
-                        title='StartDate'
-                        type='date'
-                        // placeholder='Start'
-                        // className='h-15 w-15 mx-8 border'
-                        // value={startDate}
-                        // onChange={handleStartDateChange}
-                    />
-                  </td>
-                  <td className="px-8">{task.resource}</td>
-                  <td className="px-8">{task.status}</td>                    
-                  <td className="px-8">{task.dep}</td>
-                  <td className="px-8">{task.priority}</td>
-                  <td className="px-8">{task.actual}</td>
-                  <td className="px-8">{task.description}</td>
-                  <td className="px-8">{task.invMilestone}</td>
-                  <td className="px-8">{task.label}</td>
-              </tr>
-            </>
+                    /> */}
+                </td>
+                <td className="px-8">
+                  {/* {task.endDate} */}
+                </td>
+                <td className="px-8">{task.resource}</td>
+                <td className="px-8">{task.status}</td>                    
+                <td className="px-8">{task.dep}</td>
+                <td className="px-8">{task.priority}</td>
+                <td className="px-8">{task.actual}</td>
+                <td className="px-8">{task.description}</td>
+                <td className="px-8">{task.invMilestone}</td>
+                <td className="px-8">{task.label}</td>
+            </tr>
+          </>
           )
       })}
         </tbody>

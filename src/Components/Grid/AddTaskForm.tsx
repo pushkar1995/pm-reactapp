@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from 'react'
 import { Task } from '../pmapp.types'
+import Datepicker from '../Datepicker/Datepicker'
 interface AddTaskFormProps {
     onAddTaskClickBtnHandler: (data: Task) => void
     toClearAddFormHandler: () => void
@@ -13,8 +14,8 @@ const AddTForm = (props: AddTaskFormProps) => {
     // const [ milestone, setMilestone ] = useState('')
     const [ initialEstimation, setInitialEstimation ] = useState('')
     const [ currentEstimation, setCurrentEstimation ] = useState('')
-    const [ startDate, setStartDate ] = useState(new Date())
-    const [ endDate, setEndDate ] = useState(new Date())
+    const [ startDate, setStartDate ]  = useState(new Date())
+    const [ endDate, setEndDate ] = useState<any>(new Date())
     const [ resource, setResource ] = useState('')
     const [ status, setStatus ] = useState('')
     const [ dep, setDep ] = useState('')
@@ -36,11 +37,6 @@ const AddTForm = (props: AddTaskFormProps) => {
         setName(e.target.value)
     }
 
-    // const handleMilestoneChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    //     setMilestone(e.target.value)
-    // }
-
-
     const handleInitialEstimation = (e: ChangeEvent<HTMLInputElement>): void => {
         setInitialEstimation(e.target.value)
     }
@@ -49,12 +45,13 @@ const AddTForm = (props: AddTaskFormProps) => {
         setCurrentEstimation(e.target.value)
     }
 
-    const handleStartDateChange = (e: ChangeEvent<Date>): void => {
-        // setStartDate(e.target.value)
+    const handleStartDateChange = (e: ChangeEvent<HTMLButtonElement>): void => {
+        setStartDate(new Date(e.target.value))
     }
 
     const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        // setEndDate(e.target.value)
+        setEndDate(e.target.value)
+        console.log(endDate)
     }
 
     const handleResourceChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -169,9 +166,9 @@ const AddTForm = (props: AddTaskFormProps) => {
             onChange={handleCurrentEstimation}
 
           />
-          <input 
-            title='StartDate'
-            type='date'
+          <Datepicker 
+            // title='StartDate'
+            // type='date'
             // placeholder='Start'
             // className='h-15 w-15 mx-8 border'
             // value={startDate}
@@ -182,8 +179,8 @@ const AddTForm = (props: AddTaskFormProps) => {
             type='date'
             // placeholder='End'
             // className='h-15 w-15 mx-8 border'
-            // value={endDate}
-            // onChange={handleEndDateChange}
+            value={endDate}
+            onChange={handleEndDateChange}
           />
           <input 
             title='Resource'
