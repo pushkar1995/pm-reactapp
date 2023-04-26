@@ -14,8 +14,8 @@ const EditGridForm = (props: EditTaskFormProps) => {
     // const [ updatedMilestone, setUpdatedMilestone ] = useState(currentData.milestone)
     // const [ updatedInitialEstimation, setUpdatedInitialEstimation ] = useState(currentData.initialEstimation)
     const [ updatedCurrentEstimation, setUpdatedCurrentEstimation ] = useState(currentData.currentEstimation)
-    const [ updatedStartDate, setUpdatedStartDate ] = useState(currentData.startDate)
-    const [ updatedEndDate, setUpdatedEndDate ] = useState(currentData.endDate)
+    const [ updatedStartDate, setUpdatedStartDate ] = useState<any>(currentData.startDate)
+    const [ updatedEndDate, setUpdatedEndDate ] = useState<any>(currentData.endDate)
     const [ updatedResource, setUpdatedResource ] = useState(currentData.resource)
     const [ updatedStatus, setUpdatedStatus ] = useState(currentData.status)
     const [ updatedDep, setUpdatedDep ] = useState(currentData.dep)
@@ -47,11 +47,11 @@ const EditGridForm = (props: EditTaskFormProps) => {
     }
 
     const handleStartDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        // setUpdatedStartDate(e.target.value)
+        setUpdatedStartDate(e.target.value)
     }
 
     const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        // setUpdatedEndDate(e.target.value)
+        setUpdatedEndDate(e.target.value)
     }
 
     const handleResourceChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -167,8 +167,8 @@ const EditGridForm = (props: EditTaskFormProps) => {
             type='text'
             placeholder='Start'
             className='h-15 w-15 mx-8 border'
-            // value={updatedStartDate}
-            // onChange={handleStartDateChange}
+            value={updatedStartDate}
+            onChange={handleStartDateChange}
             // ref={dateInputRef}
           />
           <input 
@@ -176,7 +176,7 @@ const EditGridForm = (props: EditTaskFormProps) => {
             type='text'
             placeholder='End'
             className='h-15 w-15 mx-8 border'
-            // value={updatedEndDate}
+            value={updatedEndDate}
             onChange={handleEndDateChange}
           />
           <input 

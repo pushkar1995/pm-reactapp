@@ -2,7 +2,7 @@ import React from 'react'
 import { Task } from '../pmapp.types'
 import { AiTwotoneEdit } from "react-icons/ai"
 import { BsFlag } from "react-icons/bs"
-
+import dayjs from 'dayjs'
 interface GridTaskListProps {
   taskArray: Task[],
   onDeleteClickHnd(id: Number): any,
@@ -78,18 +78,10 @@ const GridList = (props: GridTaskListProps) => {
                 <td className="px-8">{task.initialEstimation}</td>
                 <td className="px-8">{task.currentEstimation}</td>
                 <td className="px-8">
-                    {/* {task.startDate} */}
-                    {/* <input 
-                        title='StartDate'
-                        type='date'
-                        // placeholder='Start'
-                        // className='h-15 w-15 mx-8 border'
-                        // value={startDate}
-                        // onChange={handleStartDateChange}
-                    /> */}
+                  {dayjs(task.startDate).format('YYYY/MM/DD')}
                 </td>
                 <td className="px-8">
-                  {/* {task.endDate} */}
+                  {dayjs(task.endDate).format('YYYY/MM/DD')}
                 </td>
                 <td className="px-8">{task.resource}</td>
                 <td className="px-8">{task.status}</td>                    
